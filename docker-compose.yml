@@ -1,0 +1,16 @@
+version: "2"
+services:
+  node:
+    container_name: node
+    image: "pythoff/node22.5.1"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV={NODE_ENV}
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - "4200"
+    ports: # use if it is necessary to expose the container to the host machine
+      - "4200:4200"
+    command: "npm start -- --host 0.0.0.0"
